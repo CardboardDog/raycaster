@@ -1,10 +1,11 @@
 #ifndef ATLAS_H
 #define ATLAS_H
-#include<etp.h>
+#include"image.h"
 #include<malloc.h>
 #include<stdio.h>
+#include<string.h>
 typedef struct{
-	etp_base** images;
+	unsigned char** images;
 	int length;
 } atlas;
 atlas* createAtlas(char*);

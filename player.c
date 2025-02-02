@@ -5,7 +5,7 @@ player* createPlayer(){
 	plyr->power = 15;
 	plyr->x = 2.0f;
 	plyr->y = 2.0f;
-	plyr->rotation = 90.0f;
+	plyr->rotation = radian*90.0f;
 	plyr->active = 0;
 	plyr->damage = 0;
 	plyr->tool = -1;

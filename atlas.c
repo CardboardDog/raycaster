@@ -5,22 +5,19 @@ atlas* createAtlas(char* fi){
 	FILE* lAtlas = fopen(fi,"r");
 	char path[260];
 	while(fgets(path,260,lAtlas)){
+		path[strcspn(path, "\n")] = 0;
 		if(mAtlas->length == 0)
-			mAtlas->images = malloc(sizeof(etp_base*));
+			mAtlas->images = malloc(sizeof(unsigned char*));
 		else
-			mAtlas->images = realloc(mAtlas->images, sizeof(etp_base*)*(mAtlas->length+1));
+			mAtlas->images = realloc(mAtlas->images, sizeof(unsigned char*)*(mAtlas->length+1));
 		mAtlas->length++;
-		mAtlas->images[mAtlas->length-1] = etp_create_base();
-		if(!etp_loads(mAtlas->images[mAtlas->length-1],path))
-			printf("loaded texture: %s",path);	
-		else
-			printf("failed to load texture: %s",path);
+		mAtlas->images[mAtlas->length-1] = loadImage(path,64,64);
 	}
 	fclose(lAtlas);
 	return mAtlas;
 }
 void freeAtlas(atlas* atl){
 	for(int i=0;i<atl->length;i++)
-		etp_free(atl->images[i]);
+		free(atl->images[i]);
 	free(atl);
 }

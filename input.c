@@ -12,7 +12,7 @@
 		       keyCheck(evnt,SDLK_5) keys[9] = mode; \
 		       keyCheck(evnt,SDLK_ESCAPE) keys[10] = 1;
 unsigned char keys[11] = {0,0,0,0,0,0,0,0,0,0,0};
-unsigned char pollInput(player* p){
+unsigned char pollInput(player* p, levels* l){
 	unsigned char running = 0;
 	SDL_Event evnt;
 	while(SDL_PollEvent(&evnt)){
@@ -24,9 +24,13 @@ unsigned char pollInput(player* p){
 			autoKeys(evnt,0)
 		}
 	}
-	float d = (float)(keys[0]-keys[1]);
-	p->x-=cos(p->rotation)*d;
-	p->y-=sin(p->rotation)*d;
-	p->rotation+=0.08*(float)(keys[2]-keys[3]);
+	float d = 0.1f*(float)(keys[0]-keys[1]);
+	float nx = p->x+d*sin(p->rotation);
+	float ny = p->y+d*cos(p->rotation);
+	if(!l->maps[l->level]->data[(int)p->y][(int)nx])
+		p->x=nx;
+	if(!l->maps[l->level]->data[(int)ny][(int)p->x])
+		p->y=ny;
+	p->rotation-=radian*(float)(keys[2]-keys[3]);
 	return running;
 }

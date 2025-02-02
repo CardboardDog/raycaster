@@ -1,10 +1,12 @@
+rm levels.dat
 xxd -r -p levels.txt levels.dat
-gcc -c main.c -o main.o -lSDL2 -IETP/libetp
-gcc -c ETP/libetp/etp.c -o etp.o -IETP/libetp 
-gcc -c atlas.c -o atlas.o -IETP/libetp
-gcc -c levels.c -o levels.o
-gcc -c entity.c -o entity.o
-gcc -c player.c -o player.o
-gcc -c clock.c -o clock.o -lSDL2 -lm
-gcc -c input.c -o input.o -lSDL2 -lm
-gcc -o main main.o etp.o atlas.o input.o entity.o levels.o player.o clock.o -lm -lSDL2
+gcc -c main.c -o main.o -lSDL2 -g 
+gcc -c atlas.c -o atlas.o -g
+gcc -c levels.c -o levels.o -g
+gcc -c entity.c -o entity.o -g
+gcc -c player.c -o player.o -g
+gcc -c clock.c -o clock.o -lSDL2 -lm -g
+gcc -c input.c -o input.o -lSDL2 -lm -g
+gcc -c world.c -o world.o -lSDL2 -lm -g
+gcc -c image.c -o image.o -g
+gcc -o main main.o image.o atlas.o input.o entity.o world.o levels.o player.o clock.o -lm -lSDL2 -g

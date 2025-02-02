@@ -1,2 +1,6 @@
-bricks.etp
-false.fake
+./bricks.data
+./wood.data
+./stone.data
+./door_red.data
+./door_blue.data
+./door_green.data
