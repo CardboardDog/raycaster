@@ -4,7 +4,7 @@
 #include"player.h"
 #include"clock.h"
 #include"input.h"
-#include"world.h"
+#include"render.h"
 #include"config.h"
 int main(){
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -24,7 +24,7 @@ int main(){
 			running = 0;
 		SDL_SetRenderDrawColor(render,0,0,0,0);
 		SDL_RenderClear(render);
-		simulateWorld(lvl,ply,atl,render);
+		renderWorld(lvl,ply,atl,render);
 		SDL_RenderPresent(render);
 		tickClock(&clk);
 	}

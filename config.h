@@ -7,5 +7,6 @@
 #define step 0.04f
 #define screenH 200
 #define	screenW 320
+#define pi 3.14159265f
 
 #endif

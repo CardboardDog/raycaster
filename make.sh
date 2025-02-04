@@ -7,6 +7,6 @@ gcc -c entity.c -o entity.o -g
 gcc -c player.c -o player.o -g
 gcc -c clock.c -o clock.o -lSDL2 -lm -g
 gcc -c input.c -o input.o -lSDL2 -lm -g
-gcc -c world.c -o world.o -lSDL2 -lm -g
+gcc -c render.c -o render.o -lSDL2 -lm -g
 gcc -c image.c -o image.o -g
-gcc -o main main.o image.o atlas.o input.o entity.o world.o levels.o player.o clock.o -lm -lSDL2 -g
+gcc -o main main.o image.o atlas.o input.o entity.o render.o levels.o player.o clock.o -lm -lSDL2 -g

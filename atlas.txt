@@ -4,3 +4,4 @@
 ./door_red.data
 ./door_blue.data
 ./door_green.data
+./robot.data

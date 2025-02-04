@@ -9,7 +9,7 @@ void mapEntities(map* m){
 					m->objects = malloc(sizeof(entity*));
 				else
 					m->objects = realloc(m->objects,sizeof(entity*)*(m->length+1));
-				m->objects[m->length] = createEntity((float)x,(float)y,id);
+				m->objects[m->length] = createEntity((float)y,(float)x,id);
 				m->length++;
 			}
 		}
