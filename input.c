@@ -27,9 +27,24 @@ unsigned char pollInput(player* p, levels* l){
 	float d = 0.1f*(float)(keys[0]-keys[1]);
 	float nx = p->x+d*sin(p->rotation);
 	float ny = p->y+d*cos(p->rotation);
+	unsigned char shiftx=0;
+	unsigned char shifty=0;
 	if(!l->maps[l->level]->data[(int)p->y][(int)nx])
-		p->x=nx;
+		shiftx=1;
 	if(!l->maps[l->level]->data[(int)ny][(int)p->x])
+		shifty=1;
+	for(int e=0;e<l->maps[l->level]->length;e++){
+		entity* ent = l->maps[l->level]->objects[e];
+		if(shiftx && nx>ent->x-0.5 && nx<ent->x+0.5 && p->y>ent->y-0.5 && p->y<ent->y+0.5)
+			shiftx=0;
+		if(shifty && p->x>ent->x-0.5 && p->x<ent->x+0.5 && ny>ent->y-0.5 && ny<ent->y+0.5)
+			shifty=0;
+		if(!shiftx && !shifty)
+			break;
+	}
+	if(shiftx)
+		p->x=nx;
+	if(shifty)
 		p->y=ny;
 	p->rotation-=radian*(float)(keys[2]-keys[3]);
 	return running;

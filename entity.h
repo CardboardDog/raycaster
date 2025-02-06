@@ -1,5 +1,5 @@
 #ifndef ENTITY_H
-#define ETITTY_H
+#define ENTITY_H
 #include<malloc.h>
 typedef struct{
 	float x;

@@ -4,6 +4,7 @@ entity* createEntity(float x, float y, unsigned char t){
 	e->x=x;
 	e->y=y;
 	e->type=t;
+	return e;
 }
 void freeEntity(entity* e){
 	free(e);

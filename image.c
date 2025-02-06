@@ -7,11 +7,8 @@ unsigned char* loadImage(char* p, int w, int h){
 		return img;
 	}
 	for(int c=0;c<(w*h*3);c++){
-		unsigned char cr;
-		if(EOF==(cr=fgetc(raw)))
-			break;
-		else 
-			img[c]=cr;
+		unsigned char cr = fgetc(raw);
+		img[c]=cr;
 	}
 	fclose(raw);
 	printf("loaded texture: %s\n",p);

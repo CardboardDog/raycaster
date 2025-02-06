@@ -19,7 +19,6 @@ int main(){
 	clock clk = createClock();
 
 	while(running){
-		SDL_Event event;
 		if(pollInput(ply,lvl))
 			running = 0;
 		SDL_SetRenderDrawColor(render,0,0,0,0);

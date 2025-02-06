@@ -38,7 +38,7 @@ void renderEntities(levels* lvl, player* ply, atlas* atl, SDL_Renderer* rnd){
 		float pos = 0.0f;
 		for(int x=p;x<p+ent->ps;x++){
 			pos+=mov;
-			if(depthBuffer[x]>ent->pd){
+			if(x>0 && x<screenW && depthBuffer[x]>ent->pd){
 				drawLine(x,ent->ps,(int)pos,6,atl,rnd);
 			}
 		}
@@ -66,7 +66,7 @@ void renderWorld(levels* lvl, player* ply, atlas* atl, SDL_Renderer* rnd){
 						ent->pd = sqrtf((sx*sx)+(sy*sy));
 						ent->draw = 1;
 						ent->ps = screenW/ent->pd;
-						ent->ps = (ent->ps>screenH)?screenH:ent->ps;
+						ent->ps = (ent->ps>screenH*3)?screenH*3:ent->ps;
 					}
 					ent->pxe = c;
 				}
